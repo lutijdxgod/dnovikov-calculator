@@ -26,8 +26,17 @@ public class Main {
                 System.out.println("Неверный формат ввода. Формат должен быть следующим: операнд1 оператор операнд2.");
                 continue;
             }
-            float firstOperand = Integer.parseInt(firstOperandRaw);
-            float secondOperand = Integer.parseInt(secondOperandRaw);
+
+            float firstOperand, secondOperand;
+            try {
+                firstOperand = Integer.parseInt(firstOperandRaw);
+                secondOperand = Integer.parseInt(secondOperandRaw);
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Операнды могут быть только числовыми.");
+                continue;
+            }
+
 
             switch (operator) {
                 case "+" -> {
@@ -49,9 +58,9 @@ public class Main {
                     }
                     float divisionResult = firstOperand / secondOperand;
                     System.out.println(divisionResult);
-
-
-
+                }
+                default -> {
+                    System.out.println("Могут использоваться только следующие операторы: + - * /.");
                 }
             }
 
